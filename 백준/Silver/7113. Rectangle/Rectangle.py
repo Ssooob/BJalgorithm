@@ -1,5 +1,5 @@
 import sys
-sys.setrecursionlimit(10**7)
+sys.setrecursionlimit(10**9)
 a,b = map(int,input().split())
 cnt = 0 
 def rect_cut(a,b):
