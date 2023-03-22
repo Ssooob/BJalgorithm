@@ -3,16 +3,18 @@ balls_raw = list(map(int,input().split()))
 balls = balls_raw
 
 def dfs(depth,ball):
-    global total,balls 
+    global balls, max_ball
     
     # 조건식을 달아줘야하고..
     if depth == N-2 : 
-        total.append(ball)
-        #print(total)
-        balls = balls_raw
+        if ball >= max_ball :
+            max_ball = ball 
+        # balls = balls_raw 
+        # 원래는 복구를 여기서 해줬는데.. 이건 의미가 없는 듯
+        # 복구는 dfs 식 끝난 후에 해주기 
+        # visited할 때도 dfs 전 후로 append pop 해주는 것처럼 
         return
-        # append 안 쓸거면 최대값 구하는 식 쓰고 
-
+    
     # 기본 재귀식을 달아줘야하고.. 
     for i in range(1,len(balls)-1):
         next_ball = ball + (balls[i-1]*balls[i+1])
@@ -21,6 +23,6 @@ def dfs(depth,ball):
         # 복구해주는 작업이 꼭 필요함 
         balls.insert(i,b)
 
-total = [] 
+max_ball = 0 
 dfs(0,0)
-print(max(total))
+print(max_ball)    
