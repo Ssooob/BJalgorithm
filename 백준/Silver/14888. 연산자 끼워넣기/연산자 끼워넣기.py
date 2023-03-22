@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 N = int(input())
 nums = list(map(int,input().split()))
 plus,minus,mul,div = map(int,input().split())
@@ -8,10 +11,11 @@ res_min = 1e9
 def dfs(depth,number,pl,mi,mu,di):
     global res_min, res_max
 
-    # 숫자를 다 사용했으면 
     if depth == N :
-         res_max = max(res_max,number)
-         res_min = min(res_min,number)
+        if number > res_max : # res_max = max(res_max,number)
+         res_max = number
+        if number < res_min : # res_min = min(res_min,number)
+         res_min = number
          return
 
     if pl >= 1 :
