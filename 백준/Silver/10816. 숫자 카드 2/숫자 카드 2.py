@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 N = int(input().rstrip())
 array = sorted(list(map(int,input().split())))
 M = int(input())
@@ -28,5 +31,4 @@ d = {}
 for m in M_nums:
     if m not in d:
         d[m] = bi_sear(array,m, 0,N-1)
-
 print(' '.join(str(d[m]) if m in d else '0' for m in M_nums))
